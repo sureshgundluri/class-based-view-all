@@ -1,0 +1,26 @@
+{% extends 'app/dummy.html' %}
+
+{% block title %}
+<title>create</title>
+{% endblock %}
+
+{% block body_block %}
+{% if form.instance.pk %}
+    <h1>update the data</h1>
+{% else %}
+    <h1>create the data</h1>
+{% endif %}
+
+
+<form  method="POST">
+    {% csrf_token %}
+    
+    {{form.as_p}}
+
+    {% if form.instance.pk %}
+    <input type="submit" value="Update">
+    {% else %}
+    <input type="submit" value="create">
+    {% endif %}
+</form>
+{% endblock %}
